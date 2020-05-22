@@ -1,8 +1,11 @@
+$size: 48px;
+
 .lib-button-base {
-    height: 48px;
+    height: $size;
     padding: 0 24px;
-    line-height: 48px;
-    display: inline-block;
+    line-height: $size;
+    display: inline-flex;
+    align-items: center;
     margin: 0;
     box-sizing: border-box;
     outline: none;
@@ -12,6 +15,7 @@
     font-size: 14px;
     font-weight: 500;
     border-radius: 30px;
+    color: #666;
     cursor: pointer;
 }
 
@@ -22,5 +26,18 @@
 
 .lib-button--second {
     border: 1px solid purple;
+    color: purple;
+}
+
+.lib-button-icon {
+    margin-right: 15px;
+    display: inline-flex;
+}
+
+.lib-button--primary .lib-button-icon {
+    color: #fff;
+}
+
+.lib-button--second .lib-button-icon {
     color: purple;
 }

@@ -8,6 +8,11 @@
       "root": "projects/button",
       "sourceRoot": "projects/button/src",
       "prefix": "lib",
+      "schematics": {
+        "@schematics/angular:component": {
+          "styleext": "scss"
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
@@ -159,9 +164,15 @@
           }
         }
       }
-    }},
+    }
+  },
   "cli": {
     "analytics": false
   },
-  "defaultProject": "button"
+  "defaultProject": "button",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }
