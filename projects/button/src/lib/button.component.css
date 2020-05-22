@@ -1,0 +1,26 @@
+.lib-button-base {
+    height: 48px;
+    padding: 0 24px;
+    line-height: 48px;
+    display: inline-block;
+    margin: 0;
+    box-sizing: border-box;
+    outline: none;
+    text-decoration: none;
+    min-width: 64px;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.lib-button--primary {
+    background: purple;
+    color: #fff;
+}
+
+.lib-button--secound {
+    border: 1px solid purple;
+    color: purple;
+}
