@@ -1,43 +1,87 @@
-$size: 48px;
+@import 'styles/_fonts.scss';
+@import 'styles/_functions.scss';
 
-.lib-button-base {
-    height: $size;
-    padding: 0 24px;
-    line-height: $size;
-    display: inline-flex;
-    align-items: center;
-    margin: 0;
-    box-sizing: border-box;
-    outline: none;
-    text-decoration: none;
-    min-width: 64px;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
-    font-size: 14px;
-    font-weight: 500;
-    border-radius: 30px;
-    color: #666;
-    cursor: pointer;
-}
+$colors: (
+    "primary-light": #4B6FDD,
+    "primary-light-hover": #2953D6,
+    "primary-disabled": #ccc
+);
 
-.lib-button--primary {
-    background: purple;
-    color: #fff;
-}
+$size: (
+    "normal": 48px,
+    "small": 32px
+);
 
-.lib-button--second {
-    border: 1px solid purple;
-    color: purple;
-}
+.lib-button {
+    
+    &__base {
+        font-family: 'Frutiger Bold', 'Open Sans', sans-serif;
+        font-size: rem(16);
+        padding: 0 24px;
+        display: inline-flex;
+        align-items: center;
+        margin: 0;
+        box-sizing: border-box;
+        outline: none;
+        text-decoration: none;
+        min-width: 64px;
+        color: #666;
+        cursor: pointer;
+    }
 
-.lib-button-icon {
-    margin-right: 15px;
-    display: inline-flex;
-}
+    &__button {
+        &--normal {
+            height: map-get($size, "normal");
+            line-height: map-get($size, "normal");
+            border-radius: 36px;
+            font-size: rem(16);
 
-.lib-button--primary .lib-button-icon {
-    color: #fff;
-}
+            .material-icons {
+                font-size: 24px;
+            }
+        }
 
-.lib-button--second .lib-button-icon {
-    color: purple;
+        &--primary {
+            background: map-get($colors, "primary-light");
+            color: #fff;
+    
+            &:hover, &:focus {
+                background: map-get($colors, "primary-light-hover");
+                transition: all .5s ease-out;
+            }
+        }
+
+        &--secondary {
+            background: #fff;
+            color: map-get($colors, "primary-light");
+            border: 1px solid map-get($colors, "primary-light");
+    
+            &:hover, &:focus {
+                background: map-get($colors, "primary-light-hover");
+                color: #fff;
+                transition: all .5s ease-out;
+            }
+        }
+
+        &--small {
+            height: map-get($size, "small");
+            line-height: map-get($size, "small");
+            border-radius: 24px;
+            font-size: rem(14);
+
+            .material-icons {
+                font-size: 16px;
+            }
+        }
+    }
+
+    &__icon {
+        margin-right: 8px;
+        display: inline-flex;
+    }
+
+    &__total-filter {
+        margin-left: 3px;
+    }
+
 }

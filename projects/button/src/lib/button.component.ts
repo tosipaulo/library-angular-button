@@ -11,11 +11,11 @@ import {
 @Component({
   selector: 'button[lib-button], a[lib-button], lib-button',
   template: `
-    <span class="lib-button-icon" *ngIf="buttonIcon">
-      <i class="material-icons">{{buttonIcon}}</i>
+    <span class="lib-button__icon" *ngIf="icon">
+      <i class="material-icons">{{icon}}</i>
     </span>
     <span><ng-content></ng-content></span>
-    <span *ngIf="totalFilter">[{{totalFilter}}]</span>
+    <span class="lib-button__total-filter" *ngIf="_totalFilter">[{{_totalFilter}}]</span>
   `,
   styleUrls: ['./button.component.scss'],
   encapsulation: ViewEncapsulation.None,
@@ -23,24 +23,32 @@ import {
 })
 export class ButtonComponent implements OnInit {
 
-  @Input() buttonIcon: string;
-  @Input() buttonType: string;
-  @Input() buttonTotalFilter: any;
+  @Input() icon: string;
+  @Input() typeStyle: string;
+  @Input() type: string;
+  @Input() totalFilter: any;
 
-  totalFilter: number;
+
+  _totalFilter: number;
 
   constructor(private elementRef: ElementRef) { }
 
   ngOnInit(): void {
     
-    this.elementRef.nativeElement.classList.add('lib-button-base');
+    this.elementRef.nativeElement.classList.add('lib-button__base');
 
-    if (this.buttonType) {
-      this.elementRef.nativeElement.classList.add(`lib-button--${this.buttonType}`);
+    if (this.type) {
+      this.elementRef.nativeElement.classList.add(`lib-button__${this.type}`);
     }
 
-    if (parseInt(this.buttonTotalFilter)) { 
-      this.totalFilter = parseInt(this.buttonTotalFilter);
+    if (this.typeStyle && this.type) {
+      const styles = this.typeStyle.split('.');
+      this.elementRef.nativeElement.classList.add(`lib-button__${this.type}--${styles[0]}`);
+      this.elementRef.nativeElement.classList.add(`lib-button__${this.type}--${styles[1]}`);
+    }
+
+    if (parseInt(this.totalFilter)) { 
+      this._totalFilter = parseInt(this.totalFilter);
     }
     
   }
