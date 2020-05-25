@@ -2,9 +2,9 @@
 @import 'styles/_functions.scss';
 
 $colors: (
-    "primary-light": #4B6FDD,
-    "primary-light-hover": #2953D6,
-    "primary-disabled": #ccc
+    "light": #4B6FDD,
+    "light-hover": #2953D6,
+    "disabled": #ccc
 );
 
 $size: (
@@ -25,11 +25,14 @@ $size: (
         outline: none;
         text-decoration: none;
         min-width: 64px;
+        border: none;
         color: #666;
         cursor: pointer;
     }
 
     &__button {
+
+
         &--normal {
             height: map-get($size, "normal");
             line-height: map-get($size, "normal");
@@ -42,22 +45,22 @@ $size: (
         }
 
         &--primary {
-            background: map-get($colors, "primary-light");
+            background: map-get($colors, "light");
             color: #fff;
     
             &:hover, &:focus {
-                background: map-get($colors, "primary-light-hover");
+                background: map-get($colors, "light-hover");
                 transition: all .5s ease-out;
             }
         }
 
         &--secondary {
             background: #fff;
-            color: map-get($colors, "primary-light");
-            border: 1px solid map-get($colors, "primary-light");
+            color: map-get($colors, "light");
+            border: 1px solid map-get($colors, "light");
     
             &:hover, &:focus {
-                background: map-get($colors, "primary-light-hover");
+                background: map-get($colors, "light-hover");
                 color: #fff;
                 transition: all .5s ease-out;
             }
@@ -71,6 +74,15 @@ $size: (
 
             .material-icons {
                 font-size: 16px;
+            }
+        }
+
+        &--disabled {
+            background: map-get($colors, "disabled");
+
+            &:hover {
+                background: map-get($colors, "disabled");
+                cursor: default;
             }
         }
     }

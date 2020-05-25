@@ -28,13 +28,12 @@ export class ButtonComponent implements OnInit {
   @Input() type: string;
   @Input() totalFilter: any;
 
-
   _totalFilter: number;
 
   constructor(private elementRef: ElementRef) { }
 
   ngOnInit(): void {
-    
+
     this.elementRef.nativeElement.classList.add('lib-button__base');
 
     if (this.type) {
@@ -49,6 +48,10 @@ export class ButtonComponent implements OnInit {
 
     if (parseInt(this.totalFilter)) { 
       this._totalFilter = parseInt(this.totalFilter);
+    }
+
+    if(this.elementRef.nativeElement.getAttribute('disabled')) {
+      this.elementRef.nativeElement.classList.add(`lib-button__${this.type}--disabled`);
     }
     
   }
