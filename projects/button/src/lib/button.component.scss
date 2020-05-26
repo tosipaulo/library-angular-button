@@ -13,6 +13,36 @@ $size: (
     "small": 32px
 );
 
+@mixin styleNormalAndSmall ($type) {
+    $borderRadius: "";
+    $fontSize: "";
+    $icon:"";
+    
+    @if $type == "normal" {
+      $borderRadius: 36px;
+      $fontSize: 16;
+      $icon: 24;
+      
+    } @else {
+      $borderRadius: 24px;
+      $fontSize: 14;
+      $icon: 16;
+    }
+    
+    height: map-get($size, $type);
+    line-height: map-get($size, $type);
+    border-radius: $borderRadius;
+    font-size: rem($fontSize);
+
+    .material-icons {
+        font-size: rem($icon);
+    }
+}
+
+@mixin hoverBackground($type) {
+    background: map-get($colors, $type) radial-gradient(circle, transparent 1%, map-get($colors, $type) 1%) center/15000%;
+}
+
 .lib-button {
     
     &__base {
@@ -32,42 +62,27 @@ $size: (
 
     &__button {
         padding: 0 24px;
+        background-position: center;
+        transition: all 0.4s;
 
         &__normal {
-            height: map-get($size, "normal");
-            line-height: map-get($size, "normal");
-            border-radius: 36px;
-            font-size: rem(16);
-
-            .material-icons {
-                font-size: 24px;
-            }
+            @include styleNormalAndSmall("normal");
         }
 
         &__small {
-            height: map-get($size, "small");
-            line-height: map-get($size, "small");
-            border-radius: 24px;
-            font-size: rem(14);
-
-            .material-icons {
-                font-size: 16px;
-            }
+            @include styleNormalAndSmall("small");
         }
-/**/  
-        &__light {
-            transition: all .3s ease-out;
 
+        &__light {
+            
             &__primary {
 
-                background: map-get($colors, "light");
+                background-color: map-get($colors, "light");
                 color: #fff;
         
-                &:hover, &:focus {
-                    background: map-get($colors, "light-hover");
-                    transition: all .5s ease-out;
+                &:hover {
+                    @include hoverBackground("light-hover");
                 }
-
 
                 &--disabled {
                     background: map-get($colors, "disabled");
@@ -76,16 +91,20 @@ $size: (
                         background: map-get($colors, "disabled");
                         cursor: default;
                     }
+
+                    &:active {
+                        background: map-get($colors, "disabled") !important;
+                    }
                 }
             }
 
             &__secondary {
-                background: #fff;
+                background-color: #fff;
                 color: map-get($colors, "light");
                 border: 1px solid map-get($colors, "light");
         
-                &:hover, &:focus {
-                    background: map-get($colors, "light-hover");
+                &:hover {
+                    @include hoverBackground("light-hover");
                     color: #fff;
                 }
 
@@ -98,24 +117,28 @@ $size: (
                         cursor: default;
                         color: map-get($colors, "disabled");
                     }
+
+                    &:active {
+                        background: transparent !important;
+                    }
+                    
                 }
             }
         }
-/**/
+
         &__dark {
-            transition: all .3s ease-out;
 
             &:hover {
-                background: map-get($colors, "dark");
+                background-color: map-get($colors, "dark");
                 color: #fff;
             }
 
             &__primary {
-                background: #fff;
+                background-color: #fff;
                 color: map-get($colors, "light");;
         
-                &:hover, &:focus {
-                    background: map-get($colors, "light-hover");
+                &:hover {
+                    @include hoverBackground("light-hover");
                 }
     
                 &--disabled {
@@ -127,16 +150,20 @@ $size: (
                         color: rgba($color: #fff, $alpha: .60);
                         cursor: default;
                     }
+
+                    &:active {
+                        background: rgba($color: #fff, $alpha: .10) !important;
+                    }
                 }
             }
 
             &__secondary {
-                background: transparent;
+                background-color: transparent;
                 color: #fff;
                 border: 1px solid #fff;
 
-                &:hover, &:focus {
-                    background: map-get($colors, "light-hover");
+                &:hover {
+                    @include hoverBackground("light-hover");
                     border: 1px solid map-get($colors, "light-hover");
                     color: #fff;
                 }
@@ -151,8 +178,18 @@ $size: (
                         color: rgba($color: #fff, $alpha: .60);
                         cursor: default;
                     }
+
+                    &:active {
+                        background-color: transparent !important;
+                    }
                 }
             }
+        }
+
+        &:active {
+            background-color: rgba($color: #fff, $alpha: .1);
+            background-size: 100%;
+            transition: background 0s;
         }
 
     }
