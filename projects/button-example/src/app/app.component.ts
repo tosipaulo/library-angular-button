@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'button-example';
+  isLoad = false;
+  setLoad() {
+    this.isLoad = !this.isLoad;
+    console.log(this.isLoad)
+  }
 }

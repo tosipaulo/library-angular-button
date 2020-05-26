@@ -43,6 +43,23 @@ $size: (
     background: map-get($colors, $type) radial-gradient(circle, transparent 1%, map-get($colors, $type) 1%) center/15000%;
 }
 
+@mixin load($color) {
+    width: rem(16);
+    height: rem(16);
+    border-radius: 50%;
+    border: 2px solid rgba($color, 0.3);
+    border-top-color: $color;
+    border-left-color: $color;
+    border-right-color: $color;
+    animation: 1.5s spin infinite linear;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 .lib-button {
     
     &__base {
@@ -61,8 +78,10 @@ $size: (
     }
 
     &__button {
+        position: relative;
         padding: 0 24px;
         background-position: center;
+        overflow: hidden;
         transition: all 0.4s;
 
         &__normal {
@@ -96,6 +115,10 @@ $size: (
                         background: map-get($colors, "disabled") !important;
                     }
                 }
+
+                .lib-button__load {
+                    @include load(#fff);
+                }
             }
 
             &__secondary {
@@ -122,6 +145,10 @@ $size: (
                         background: transparent !important;
                     }
                     
+                }
+
+                .lib-button__load {
+                    @include load(map-get($colors, "light"));
                 }
             }
         }
@@ -155,6 +182,10 @@ $size: (
                         background: rgba($color: #fff, $alpha: .10) !important;
                     }
                 }
+
+                .lib-button__load {
+                    @include load(map-get($colors, "light"));
+                }
             }
 
             &__secondary {
@@ -183,6 +214,10 @@ $size: (
                         background-color: transparent !important;
                     }
                 }
+
+                .lib-button__load {
+                    @include load(#fff);
+                }
             }
         }
 
@@ -201,6 +236,21 @@ $size: (
 
     &__total-filter {
         margin-left: 3px;
+    }
+
+    &__box-load {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__hide {
+        opacity: 0;
     }
 
 }

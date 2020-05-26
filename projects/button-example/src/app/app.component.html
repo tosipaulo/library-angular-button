@@ -1,3 +1,4 @@
+
 <p>
   <a href="www.google.com.br" lib-button>Button Link</a>
 </p>
@@ -15,7 +16,12 @@
 </p>
 
 <p>
-  <lib-button type="button" typeStyle="primary.normal.light" disabled="true">Second Button Disabled</lib-button>
+  <lib-button type="button" typeStyle="primary.normal.light" disabled="true">Primary Button Disabled</lib-button>
+</p>
+
+<p>
+  <button (click)="setLoad()">Mudar</button>
+  <lib-button type="button" typeStyle="primary.normal.light" disabled="false" [load]="isLoad">Primary Button load</lib-button>
 </p>
 
 <p>
@@ -31,11 +37,11 @@
 </p>
 
 <p>
-  <lib-button type="button" typeStyle="secondary.normal.light" icon="home" totalFilter="1">Second Button Icon</lib-button>
+  <lib-button type="button" typeStyle="secondary.normal.light" icon="home" totalFilter="1" [load]="isLoad">Second Button Icon</lib-button>
 </p>
 
 <p>
-  <lib-button type="button" typeStyle="primary.small.light" icon="home">Second Button Icon</lib-button>
+  <lib-button type="button" typeStyle="primary.small.light" icon="home" [load]="isLoad">Second Button Icon</lib-button>
 </p>
 
 <p>
@@ -43,7 +49,7 @@
 </p>
 
 <p style="background: rgb(77, 98, 229); padding: 15px 0">
-  <lib-button type="button" typeStyle="primary.normal.dark" icon="home" totalFilter="1">Primary Button Icon</lib-button>
+  <lib-button type="button" typeStyle="primary.normal.dark" icon="home" totalFilter="1" [load]="isLoad">Primary Button Icon</lib-button>
 </p>
 
 <p style="background: rgb(77, 98, 229); padding: 15px 0">
@@ -51,7 +57,7 @@
 </p>
 
 <p style="background: rgb(77, 98, 229); padding: 15px 0">
-  <lib-button type="button" typeStyle="secondary.normal.dark" icon="home" totalFilter="1" disabled="false">Second Button Icon</lib-button>
+  <lib-button type="button" typeStyle="secondary.normal.dark" icon="home" totalFilter="1" disabled="false" [load]="isLoad">Second Button Icon</lib-button>
 </p>
 
 <p style="background: rgb(77, 98, 229); padding: 15px 0">
