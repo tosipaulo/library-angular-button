@@ -4,6 +4,7 @@
 $colors: (
     "light": #4B6FDD,
     "light-hover": #2953D6,
+    "dark": #2953D6,
     "disabled": #ccc
 );
 
@@ -17,7 +18,6 @@ $size: (
     &__base {
         font-family: 'Frutiger Bold', 'Open Sans', sans-serif;
         font-size: rem(16);
-        padding: 0 24px;
         display: inline-flex;
         align-items: center;
         margin: 0;
@@ -31,9 +31,9 @@ $size: (
     }
 
     &__button {
+        padding: 0 24px;
 
-
-        &--normal {
+        &__normal {
             height: map-get($size, "normal");
             line-height: map-get($size, "normal");
             border-radius: 36px;
@@ -44,29 +44,7 @@ $size: (
             }
         }
 
-        &--primary {
-            background: map-get($colors, "light");
-            color: #fff;
-    
-            &:hover, &:focus {
-                background: map-get($colors, "light-hover");
-                transition: all .5s ease-out;
-            }
-        }
-
-        &--secondary {
-            background: #fff;
-            color: map-get($colors, "light");
-            border: 1px solid map-get($colors, "light");
-    
-            &:hover, &:focus {
-                background: map-get($colors, "light-hover");
-                color: #fff;
-                transition: all .5s ease-out;
-            }
-        }
-
-        &--small {
+        &__small {
             height: map-get($size, "small");
             line-height: map-get($size, "small");
             border-radius: 24px;
@@ -76,15 +54,107 @@ $size: (
                 font-size: 16px;
             }
         }
+/**/  
+        &__light {
+            transition: all .3s ease-out;
 
-        &--disabled {
-            background: map-get($colors, "disabled");
+            &__primary {
 
-            &:hover {
-                background: map-get($colors, "disabled");
-                cursor: default;
+                background: map-get($colors, "light");
+                color: #fff;
+        
+                &:hover, &:focus {
+                    background: map-get($colors, "light-hover");
+                    transition: all .5s ease-out;
+                }
+
+
+                &--disabled {
+                    background: map-get($colors, "disabled");
+    
+                    &:hover {
+                        background: map-get($colors, "disabled");
+                        cursor: default;
+                    }
+                }
+            }
+
+            &__secondary {
+                background: #fff;
+                color: map-get($colors, "light");
+                border: 1px solid map-get($colors, "light");
+        
+                &:hover, &:focus {
+                    background: map-get($colors, "light-hover");
+                    color: #fff;
+                }
+
+                &--disabled {
+                    color: map-get($colors, "disabled");
+                    border: 1px solid map-get($colors, "disabled");
+        
+                    &:hover {
+                        background: #fff;
+                        cursor: default;
+                        color: map-get($colors, "disabled");
+                    }
+                }
             }
         }
+/**/
+        &__dark {
+            transition: all .3s ease-out;
+
+            &:hover {
+                background: map-get($colors, "dark");
+                color: #fff;
+            }
+
+            &__primary {
+                background: #fff;
+                color: map-get($colors, "light");;
+        
+                &:hover, &:focus {
+                    background: map-get($colors, "light-hover");
+                }
+    
+                &--disabled {
+                    background: rgba($color: #fff, $alpha: .10);
+                    color: rgba($color: #fff, $alpha: .60);
+        
+                    &:hover {
+                        background: rgba($color: #fff, $alpha: .10);
+                        color: rgba($color: #fff, $alpha: .60);
+                        cursor: default;
+                    }
+                }
+            }
+
+            &__secondary {
+                background: transparent;
+                color: #fff;
+                border: 1px solid #fff;
+
+                &:hover, &:focus {
+                    background: map-get($colors, "light-hover");
+                    border: 1px solid map-get($colors, "light-hover");
+                    color: #fff;
+                }
+
+                &--disabled {
+                    border: 1px solid rgba($color: #fff, $alpha: .40);
+                    color: rgba($color: #fff, $alpha: .60);
+        
+                    &:hover {
+                        background: transparent;
+                        border: 1px solid rgba($color: #fff, $alpha: .40);
+                        color: rgba($color: #fff, $alpha: .60);
+                        cursor: default;
+                    }
+                }
+            }
+        }
+
     }
 
     &__icon {

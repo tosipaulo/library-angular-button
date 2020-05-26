@@ -42,16 +42,19 @@ export class ButtonComponent implements OnInit {
 
     if (this.typeStyle && this.type) {
       const styles = this.typeStyle.split('.');
-      this.elementRef.nativeElement.classList.add(`lib-button__${this.type}--${styles[0]}`);
-      this.elementRef.nativeElement.classList.add(`lib-button__${this.type}--${styles[1]}`);
+      this.elementRef.nativeElement.classList.add(`lib-button__${this.type}__${styles[2]}`);
+      this.elementRef.nativeElement.classList.add(`lib-button__${this.type}__${styles[2]}__${styles[0]}`);
+      this.elementRef.nativeElement.classList.add(`lib-button__${this.type}__${styles[1]}`);
+      
+      if(JSON.parse(this.elementRef.nativeElement.getAttribute('disabled'))) {
+        console.log(this.elementRef.nativeElement.getAttribute('disabled'))
+        this.elementRef.nativeElement.classList.add(`lib-button__${this.type}__${styles[2]}__${styles[0]}--disabled`);
+      }
+
     }
 
     if (parseInt(this.totalFilter)) { 
       this._totalFilter = parseInt(this.totalFilter);
-    }
-
-    if(this.elementRef.nativeElement.getAttribute('disabled')) {
-      this.elementRef.nativeElement.classList.add(`lib-button__${this.type}--disabled`);
     }
     
   }
